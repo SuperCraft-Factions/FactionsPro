@@ -775,7 +775,7 @@ class FactionCommands {
                         $stmt->bindValue(":y", $sender->getY());
                         $stmt->bindValue(":z", $sender->getZ());
                         $result = $stmt->execute();
-                        $sender->sendMessage($this->plugin->formatMessage("Home set", true));
+                        $sender->sendMessage($this->plugin->formatMessage("§l§4[SCFFacs]§r§c Home set", true));
                     }
 
                     /////////////////////////////// UNSETHOME ///////////////////////////////
@@ -791,7 +791,7 @@ class FactionCommands {
                         }
                         $faction = $this->plugin->getPlayerFaction($sender->getName());
                         $this->plugin->db->query("DELETE FROM home WHERE faction = '$faction';");
-                        $sender->sendMessage($this->plugin->formatMessage("Home unset", true));
+                        $sender->sendMessage($this->plugin->formatMessage("§l§4[SCFFacs]§r§c Home unset", true));
                     }
 
                     /////////////////////////////// HOME ///////////////////////////////
@@ -806,9 +806,9 @@ class FactionCommands {
                         $array = $result->fetchArray(SQLITE3_ASSOC);
                         if (!empty($array)) {
                             $sender->getPlayer()->teleport(new Position($array['x'], $array['y'], $array['z'], $this->plugin->getServer()->getLevelByName("Factions")));
-                            $sender->sendMessage($this->plugin->formatMessage("Teleported home", true));
+                            $sender->sendMessage($this->plugin->formatMessage("§l§4[SCFFacs]§r§c Teleported home", true));
                         } else {
-                            $sender->sendMessage($this->plugin->formatMessage("Home is not set"));
+                            $sender->sendMessage($this->plugin->formatMessage("§l§4[SCFFacs]§r§c Home is not set"));
                         }
                     }
 
