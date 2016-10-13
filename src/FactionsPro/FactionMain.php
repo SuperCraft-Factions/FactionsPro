@@ -242,7 +242,7 @@ class FactionMain extends PluginBase implements Listener {
             $i = $i + 1;
         }
 
-        $s->sendMessage($this->formatMessage("~ *<$rankname> of |$faction|* ~", true));
+        $s->sendMessage($this->formatMessage("§l§4[SCFFacs]§r§c ~ *<$rankname> of |$faction|* ~", true));
         $s->sendMessage($team);
     }
 
@@ -258,7 +258,7 @@ class FactionMain extends PluginBase implements Listener {
             $i = $i + 1;
         }
 
-        $s->sendMessage($this->formatMessage("~ Allies of *$faction* ~", true));
+        $s->sendMessage($this->formatMessage("§l§4[SCFFacs]§r§c ~ Allies of *$faction* ~", true));
         $s->sendMessage($team);
     }
 
@@ -267,7 +267,7 @@ class FactionMain extends PluginBase implements Listener {
         $result = $this->db->query("SELECT faction FROM strength ORDER BY power DESC LIMIT 10;");
         $row = array();
         $i = 0;
-        $s->sendMessage($this->formatMessage("~ The first 10 most strengthful factions ~", true));
+        $s->sendMessage($this->formatMessage("§l§4[SCFFacs]§r§c ~ The first 10 most powerful factions ~", true));
         while ($resultArr = $result->fetchArray(SQLITE3_ASSOC)) {
             $j = $i + 1;
             $cf = $resultArr['faction'];
@@ -343,13 +343,13 @@ class FactionMain extends PluginBase implements Listener {
 
             if ($this->prefs->get("EnableOverClaim")) {
                 if ($power_sender < $power_claimedBy) {
-                    $sender->sendMessage($this->formatMessage("This area is aleady claimed by $claimedBy with $power_claimedBy STR. Your faction has $power_sender power. You don't have enough power to overclaim this plot."));
+                    $sender->sendMessage($this->formatMessage("§l§4[SCFFacs]§r§c This area is aleady claimed by $claimedBy with $power_claimedBy STR. Your faction has $power_sender power. You don't have enough power to overclaim this plot."));
                 } else {
-                    $sender->sendMessage($this->formatMessage("This area is aleady claimed by $claimedBy with $power_claimedBy STR. Your faction has $power_sender power. Type /f overclaim to overclaim this plot if you want."));
+                    $sender->sendMessage($this->formatMessage("§l§4[SCFFacs]§r§c This area is aleady claimed by $claimedBy with $power_claimedBy STR. Your faction has $power_sender power. Type /f overclaim to overclaim this plot if you want."));
                 }
                 return false;
             } else {
-                $sender->sendMessage($this->formatMessage("Overclaiming is disabled."));
+                $sender->sendMessage($this->formatMessage("§l§4[SCFFacs]§r§c Overclaiming is disabled."));
                 return false;
             }
         }

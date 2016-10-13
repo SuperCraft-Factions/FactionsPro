@@ -34,7 +34,7 @@ class FactionListener implements Listener {
 		
 		if($this->plugin->motdWaiting($player)) {
 			if(time() - $this->plugin->getMOTDTime($player) > 30) {
-				$PCE->getPlayer()->sendMessage($this->plugin->formatMessage("Timed out. Please use /f desc again."));
+				$PCE->getPlayer()->sendMessage($this->plugin->formatMessage("§l§4[SCFFacs]§r§c Timed out. Please use /f desc again."));
 				$this->plugin->db->query("DELETE FROM motdrcv WHERE player='$player';");
 				$PCE->setCancelled(true);
 				return true;
@@ -43,7 +43,7 @@ class FactionListener implements Listener {
 				$faction = $this->plugin->getPlayerFaction($player);
 				$this->plugin->setMOTD($faction, $player, $motd);
 				$PCE->setCancelled(true);
-				$PCE->getPlayer()->sendMessage($this->plugin->formatMessage("Successfully updated the faction description. Type /f info.", true));
+				$PCE->getPlayer()->sendMessage($this->plugin->formatMessage("§l§4[SCFFacs]§r§c Successfully updated the faction description. Type /f info.", true));
 			}
 			return true;
 		}
@@ -56,7 +56,7 @@ class FactionListener implements Listener {
 					if($this->plugin->getPlayerFaction($fP->getName()) == $faction){
 						if($this->plugin->getServer()->getPlayer($fP->getName())){
 							$PCE->setCancelled(true);
-							$this->plugin->getServer()->getPlayer($fP->getName())->sendMessage(TextFormat::DARK_GREEN."[$faction]".TextFormat::BLUE." $player: ".TextFormat::AQUA. $msg);
+							$this->plugin->getServer()->getPlayer($fP->getName())->sendMessage(TextFormat::DARK_GREEN."§l§4[SCFFacs]§r§c [$faction]".TextFormat::BLUE." $player: ".TextFormat::AQUA. $msg);
 						}
 					}
 				}
@@ -71,8 +71,8 @@ class FactionListener implements Listener {
 					if($this->plugin->areAllies($this->plugin->getPlayerFaction($fP->getName()), $faction)){
 						if($this->plugin->getServer()->getPlayer($fP->getName())){
 							$PCE->setCancelled(true);
-							$this->plugin->getServer()->getPlayer($fP->getName())->sendMessage(TextFormat::DARK_GREEN."[$faction]".TextFormat::BLUE." $player: ".TextFormat::AQUA. $msg);
-							$PCE->getPlayer()->sendMessage(TextFormat::DARK_GREEN."[$faction]".TextFormat::BLUE." $player: ".TextFormat::AQUA. $msg);
+							$this->plugin->getServer()->getPlayer($fP->getName())->sendMessage(TextFormat::DARK_GREEN."§l§4[SCFFacs]§r§c [$faction]".TextFormat::BLUE." $player: ".TextFormat::AQUA. $msg);
+							$PCE->getPlayer()->sendMessage(TextFormat::DARK_GREEN."§l§4[SCFFacs]§r§c [$faction]".TextFormat::BLUE." $player: ".TextFormat::AQUA. $msg);
 						}
 					}
 				}
@@ -105,7 +105,7 @@ class FactionListener implements Listener {
 				return true;
 			} else {
 				$event->setCancelled(true);
-				$event->getPlayer()->sendMessage($this->plugin->formatMessage("You cannot break blocks here. This is already a property of a faction. Type /f plotinfo for details."));
+				$event->getPlayer()->sendMessage($this->plugin->formatMessage("§l§4[SCFFacs]§r§c You cannot break blocks here. This is already a property of a faction. Type /f plotinfo for details."));
 				return true;
 			}
 		}
@@ -117,7 +117,7 @@ class FactionListener implements Listener {
 				return true;
 			} else {
 				$event->setCancelled(true);
-				$event->getPlayer()->sendMessage($this->plugin->formatMessage("You cannot place blocks here. This is already a property of a faction. Type /f plotinfo for details."));
+				$event->getPlayer()->sendMessage($this->plugin->formatMessage("§l§4[SCFFacs]§r§c You cannot place blocks here. This is already a property of a faction. Type /f plotinfo for details."));
 				return true;
 			}
 		}
